@@ -138,7 +138,9 @@ function createRow(values=[],index=-1){
         }
     }
 
-    let html = `<tr><td class="row-index">${row}</td>`
+    
+
+    let html = `<td class="row-index">${row}</td>`
     values.forEach(val => {
         html += `
         <td>
@@ -147,8 +149,11 @@ function createRow(values=[],index=-1){
             </div>
         </td>`
     })
-    html += `</tr>`
-    document.getElementById(sheets[index]).getElementsByTagName('tbody')[0].innerHTML+=html
+
+    let newRow=document.getElementById(sheets[index]).getElementsByTagName('tbody')[0].insertRow(-1)
+    
+    newRow.innerHTML=html
+    
 }
 
 function clearTable(i=-1) {
