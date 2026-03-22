@@ -384,7 +384,7 @@ function generateRender(){
             row=csv[e].split(";")
 
             text+=format[t](row)
-            if (e!==csv.length-1) text+="\n"
+            if (e!==csv.length-1) text+="\n\n"
         }
         if (t!=sheets.length-1) text+="\n\n\n"
     }
