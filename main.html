@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg">
+    <link href="style.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet"></link>
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <header>
+        <div style="display: flex;flex-direction: row;gap: 15px;align-items: baseline;">
+            <div onclick="openModal(0)" class="logo">Biblio<span>.graphy</span></div>
+            <div class="file-name-div" id="file-name-div">
+                <span id="ghost"></span>
+                <input id="input-file-name" class="input-file-name" value="Document sans titre" placeholder="Document sans titre" oninput="document.getElementById('ghost').textContent=this.value || this.placeholder">
+            </div>
+            <div class="save-info" id="save-info"></div>
+        </div>
+        
+        <div style="display: flex; gap: 10px;">
+            <button class="btn_secondary" onclick="ImportFile()">Importer</button>
+            <input type="file" id="fileDialog" style="display: none;" accept=".bg,.zip">
+            <button class="btn_primary" onclick="exportProjectAsZip()">Sauvegarder</button>
+            <button class="btn_primary" onclick="generateRender()"><i class="fa-solid fa-play fa-shake" style="animation-duration: 4s;"></i> Générer</button>
+        </div>
+    </header>
+
+    <nav class="tabs-nav" id="tabs-nav">
+        <div class="tab active" onclick="ChangeTab(0)">Livres</div>
+        <div class="tab" onclick="ChangeTab(1)">Revues</div>
+        <div class="tab" onclick="ChangeTab(2)">Vidéos</div>
+        <div class="tab" onclick="ChangeTab(3)">Sites Web</div>
+        <div class="tab" onclick="ChangeTab(4)">Images</div>
+    </nav>
+
+    <div class="actions-bar">
+        <button class="btn_primary" onclick="triggerSave();createRow()">+ Ajouter une ligne</button>
+        <button class="btn_secondary" onclick="triggerSave();cleanEmptyRows()"><i class="fa-solid fa-trash-can"></i> Nettoyer Lignes Vides</button>
+        <span style="color: var(--secondary); font-size: 0.8rem;">Type sélectionné : <strong id="type-tab">Livres</strong></span>
+    </div>
+
+    <div class="sheet-container" id="sheet-container">
+    </div>
+
+
+    <div class="modals" id="modals" style="display: none;">
+        <div class="modal modal_menu">
+            <div class="closeBtn"><i class="fa-solid fa-xmark" onclick="closeModals()" style="cursor: pointer;"></i></div>
+            <div class="modalButtons">
+                <div class="logoModal">Biblio<span>.graphy</span></div>
+                <button class="btn_primary" onclick="newProject();closeModals()">Nouveau Projet</button>
+                <button class="btn_secondary" onclick="ImportFile();closeModals()">Importer</button>
+                <button class="btn_primary" onclick="exportProjectAsZip();closeModals()">Sauvegarder</button>
+            </div>
+        </div>
+        <div class="modal modal_render">
+            <div class="closeBtn"><i class="fa-solid fa-xmark" onclick="closeModals()" style="cursor: pointer;"></i></div>
+            <h2 class="ModalRender-title"><span><i class="fa-solid fa-check-double"></i> Rendu Terminé</span></h2>
+            <div class="textRender" id="textRender" contenteditable="true" spellcheck="false">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+    "Tables":{
+        "Website":[
+            "Nom de l'auteur",
+            "Prénom (Optionnel)",
+            "Titre de la page",
+            "Nom de l'éditeur",
+            "Date de publication",
+            "Date de mise à jour",
+            "Date de consultation",
+            "Lien"
+        ],
+        "Books":[
+            "Nom de l'auteur",
+            "Prénom (Optionnel)",
+            "Titre du Livre",
+            "Nom de l'éditeur",
+            "Date de publication",
+            "Pages (px-y)"
+        ],
+        "Review":[
+            "Nom de l'auteur",
+            "Prénom (Optionnel)",
+            "Titre de l'article",
+            "Titre de la revue",
+            "Date de publication",
+            "Numéro",
+            "Pages (px-y)"
+        ],
+        "Video":[
+            "Nom de l'auteur",
+            "Prénom (Optionnel)",
+            "Titre de la Vidéo",
+            "Date de publication",
+            "Durée Totale (m'ss)",
+            "Platforme de diffusion",
+            "Partie Consulté (m'ss-m'ss)",
+            "Lien"
+        ],
+        "Images":[
+            "Nom de l'auteur",
+            "Prénom (Optionnel)",
+            "Titre de l'image",
+            "Type de l'image",
+            "Date de publication",
+            "Lien"
+        ]
+    }
+}
