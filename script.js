@@ -352,7 +352,7 @@ function FormatLink(){
 }
 
 function generateRender(){
-    let text=""
+    let listeText=[]
     let title=[
         "Livres:\n",
         "Revues:\n",
@@ -383,18 +383,16 @@ function generateRender(){
     ]
     
     for (let t in sheets){
-        text+=title[t]
         let csv=tableToCSV(t).replaceAll('"',"").split("\n")
         for (let e=1;e<csv.length;e++){
             row=csv[e].split(";")
 
-            text+=format[t](row)
-            if (e!==csv.length-1) text+="\n\n"
+            let text=format[t](row)
+            listeText.push(text)
         }
-        if (t!=sheets.length-1) text+="\n\n\n"
     }
-    
-    document.getElementById('textRender').innerText=text
+
+    document.getElementById('textRender').innerText=listeText.sort().join("\n\n")
     FormatLink()
 
     openModal(1)
